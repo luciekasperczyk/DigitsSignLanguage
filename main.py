@@ -32,6 +32,7 @@ while True:
         #print the coordinates for each fingertip/landmark
         for id in enumerate(hand_landmark.landmark):
             print(id, ":", x, y, z)
+        #create a method to add all the coordinates in a csv file
 
     cv2.imshow("Hand Tracking", img)
     cv2.waitKey(1)
