@@ -33,6 +33,9 @@ while True:
         for id in enumerate(hand_landmark.landmark):
             print(id, ":", x, y, z)
         #create a method to add all the coordinates in a csv file
+            #when a selected key from the key board is pushed, take a picture of the hand
+            #create a csv file that is going to collect all the coordinates from the taken picture
+            #/!\ don't forget to write down all the sources you use !
 
     cv2.imshow("Hand Tracking", img)
     cv2.waitKey(1)
