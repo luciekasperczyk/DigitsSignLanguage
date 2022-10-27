@@ -15,6 +15,48 @@ for i in range (21) :
     coordinates.append("y"+str(i))
     coordinates.append("z"+str(i))
 
+
+def getCoordinatesForCSV(number):
+    csvFile = 0
+    match number:
+        case 0:
+            csvFile = './dataZero.csv'
+        case 1 :
+            csvFile = './dataOne.csv'
+        case 2 :
+            csvFile = './dataTwo.csv'
+        case 3:
+            csvFile = './dataThree.csv'
+        case 4:
+            csvFile = './dataFour.csv'
+        case 5:
+            csvFile = './dataFive.csv'
+        case 6:
+            csvFile = './dataSix.csv'
+        case 7:
+            csvFile = './dataSeven.csv'
+        case 8:
+            csvFile = './dataEight.csv'
+        case 9:
+            csvFile = './dataNine.csv'
+    if keyboard.read_key():
+        # print the coordinates for each fingertip/landmark
+        data = []
+        for id in hand_landmark.landmark:
+            data.append({
+                id.x,
+                id.y,
+                id.z,
+            })
+        print(data)
+        # open the file in the write mode
+        with open(csvFile, 'a') as file:
+            # create the csv writer
+            writer = csv.writer(file)
+            # write rows in the csv file
+            writer.writerow(data)
+
+
 while True:
     ret, img = cap.read() #create and open the camera window
     img = cv2.flip(img, 1) #flip the image so it is like a miror
@@ -37,22 +79,9 @@ while True:
         for id, landMark in enumerate(hand_landmark.landmark):
             landMarkList.append(landMark)
 
-        if keyboard.is_pressed("l"):
-            # print the coordinates for each fingertip/landmark
-            data = []
-            for id in hand_landmark.landmark:
-                data.append({
-                    id.x,
-                    id.y,
-                    id.z,
-                })
-            print(data)
-            #open the file in the write mode
-            with open('./data.csv', 'a') as file :
-                #create the csv writer
-                writer = csv.writer(file)
-                #write rows in the csv file
-                writer.writerow(data)
+        #getCoordinatesForCSV(keyboard.read_key())
+
+
 
     cv2.imshow("Hand Tracking", img)
     cv2.waitKey(1)
