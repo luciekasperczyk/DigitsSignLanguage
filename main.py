@@ -14,6 +14,12 @@ for i in range(21):
     coordinates.append("y" + str(i))
     coordinates.append("z" + str(i))
 
+# with open("./dataOne.csv", 'a') as file:
+#     # create the csv writer
+#     writer = csv.writer(file)
+#     # write rows in the csv file
+#     writer.writerow(coordinates)
+
 
 def getCoordinatesForCSV():
     # print the coordinates for each fingertip/landmark
