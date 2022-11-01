@@ -2,9 +2,9 @@ import csv
 import cv2
 import keyboard as keyboard
 import mediapipe as mp
+import xlsxwriter
 
 cap = cv2.VideoCapture(0)
-
 mediapipeHands = mp.solutions.hands
 hands = mediapipeHands.Hands()
 mediapipeDrawing = mp.solutions.drawing_utils
@@ -68,7 +68,6 @@ def getCoordinatesForCSV():
             # write rows in the csv file
             writer.writerow(data)
 
-
 while True:
     ret, img = cap.read()  # create and open the camera window
     img = cv2.flip(img, 1)  # flip the image so it is like a mirror
@@ -94,5 +93,4 @@ while True:
 
         getCoordinatesForCSV()
 
-    cv2.imshow("Hand Tracking", img)
-    cv2.waitKey(1)
+main()
