@@ -14,11 +14,11 @@ for i in range(21):
     coordinates.append("y" + str(i))
     coordinates.append("z" + str(i))
 
-with open("data.csv", 'a') as file:
+#with open("data.csv", 'a') as file:
 #     # create the csv writer
-     writer = csv.writer(file)
+#     writer = csv.writer(file)
 #     # write rows in the csv file
-     writer.writerow(coordinates)
+#     writer.writerow(coordinates)
 
 
 def getCoordinatesForCSV():
