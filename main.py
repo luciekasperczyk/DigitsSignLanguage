@@ -2,6 +2,7 @@ import csv
 import cv2
 import keyboard as keyboard
 import mediapipe as mp
+import pandas as pd
 #import xlsxwriter
 
 cap = cv2.VideoCapture(0)
@@ -67,6 +68,8 @@ def getCoordinatesForCSV():
             writer = csv.writer(file)
             # write rows in the csv file
             writer.writerow(data)
+dataCoord1 = pd.read_csv("C:/Users/lucie/Downloads/digit_file.csv")
+print(dataCoord1)
 
 while True:
     ret, img = cap.read()  # create and open the camera window
@@ -95,4 +98,6 @@ while True:
 
     cv2.imshow("Hand Tracking", img)
     cv2.waitKey(1)
+
+
 main()
