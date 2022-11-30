@@ -5,10 +5,15 @@ import mediapipe as mp
 import pandas as pd
 #import xlsxwriter
 
+#define a video capture object
 cap = cv2.VideoCapture(0)
+#initialize the hands class and store it in a variable
 mediapipeHands = mp.solutions.hands
+#set the hands function that will hold the landmarks points
 hands = mediapipeHands.Hands()
+#set the drawing function of the hand landmarks on the image
 mediapipeDrawing = mp.solutions.drawing_utils
+# create coordinates for the csv file
 coordinates = []
 for i in range(21):
     coordinates.append("x" + str(i))
@@ -68,16 +73,23 @@ def getCoordinatesForCSV():
             writer = csv.writer(file)
             # write rows in the csv file
             writer.writerow(data)
-dataCoord1 = pd.read_csv("C:/Users/lucie/Downloads/digit_file.csv")
-print(dataCoord1)
+#--------------------------------------------in the model file---------------------------------------------#
+# dataCoord = pd.read_csv("C:/Users/lucie/Downloads/digit_file.csv")
+# print(dataCoord)
+# #x corresponds to all the coordinates
+# #.iloc[all the rows, the column starting at x0 to z20]
+# x = dataCoord.iloc[:,2:65]
+# print(x)
+# #y corresponds to the label : the different digitq
+# y = dataCoord.iloc[:,1]
+# print(y)
 
 while True:
     ret, img = cap.read()  # create and open the camera window
     img = cv2.flip(img, 1)  # flip the image so it is like a mirror
+
     # create a list of all the different fingertips from 0 to 20
     fingerTips = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    # create coordinates for the csv file
-
     # create an empty list for the future hand's landmarks
     landMarkList = []
     results = hands.process(img)
@@ -100,4 +112,3 @@ while True:
     cv2.waitKey(1)
 
 
-main()
