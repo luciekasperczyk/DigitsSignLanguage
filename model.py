@@ -28,3 +28,5 @@ yPrediction = classifier.predict(xTest)
 #------------------------Accuracy----------------------------#
 print(classification_report(yTest, yPrediction))
 print(accuracy_score(yTest, yPrediction))
+
+#test
